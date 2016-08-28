@@ -1,0 +1,17 @@
+$$get_url = 'http://redirectedurl.com/example.php';
+
+$ch = curl_init($get_url);
+
+curl_setopt($ch, CURLOPT_NOBODY, 1);
+
+curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1); // follow redirects
+
+curl_setopt($ch, CURLOPT_AUTOREFERER, 1); // set referer on redirect
+
+curl_exec($ch);
+
+$target_url = curl_getinfo($ch, CURLINFO_EFFECTIVE_URL);
+
+curl_close($ch);
+
+echo $target_url;
