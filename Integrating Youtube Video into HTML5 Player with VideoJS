@@ -1,0 +1,60 @@
+function cda_ytvideojs(){
+/*
+ * Integrating Youtube HTML5 - Sumonst21
+ */
+$yt_id = get_field('youtube_video_id');
+
+if($yt_id){
+	
+$vsource = base64_decode(aHR0cDovL3N1bW9uc3QyMS5jb20vcHJvamVjdHMvc2VyYmlhL3N0b3Jtb2ZjZW50dXJ5L1lvdVR1YmUtRG93bmxvYWRlci1tYXN0ZXIv);
+$get_url = ''.$vsource.'getvideo.mp4?videoid='.$yt_id.'&format=ipad';
+
+$ch = curl_init($get_url);
+curl_setopt($ch, CURLOPT_NOBODY, 1);
+curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1); // follow redirects
+curl_setopt($ch, CURLOPT_AUTOREFERER, 1); // set referer on redirect
+curl_exec($ch);
+$target_url = curl_getinfo($ch, CURLINFO_EFFECTIVE_URL);
+curl_close($ch);
+
+/*
+ * All the different thumbnail sizes of a YouTube video
+/*
+
+http://img.youtube.com/vi/THE-VIDEO-ID/0.jpg or
+http://img.youtube.com/vi/THE-VIDEO-ID/default.jpg – full size thumb
+http://img.youtube.com/vi/THE-VIDEO-ID/mqdefault.jpg – medium default
+http://img.youtube.com/vi/THE-VIDEO-ID/maxresdefault.jpg – high res
+http://img.youtube.com/vi/THE-VIDEO-ID/1.jpg – small thumb
+http://img.youtube.com/vi/THE-VIDEO-ID/2.jpg – small thumb
+http://img.youtube.com/vi/THE-VIDEO-ID/3.jpg – small thumb
+
+*/
+
+$yt_hqthumb = 'http://img.youtube.com/vi/'.$yt_id.'/hqdefault.jpg';
+$yt_maxres = 'http://img.youtube.com/vi/'.$yt_id.'/maxresdefault.jpg';
+$yt_customthumb = get_field('custom_video_thumbnail');
+/*
+if($yt_customthumb){
+	echo '<video id="example_video_1" class="video-js vjs-default-skin" controls preload="none" width="100%" height="auto" poster="'.$yt_customthumb.'" data-setup="{}">';
+}
+else {
+	echo '<video id="example_video_1" class="video-js vjs-default-skin" controls preload="none" width="640" height="264" poster="'.$yt_hqthumb.'" data-setup="{}">';
+}
+echo '<source src="'. $target_url .'" type="video/mp4">';
+//echo '<source src="MY_VIDEO.webm" type="video/webm">';
+echo '<p class="vjs-no-js"> To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>';
+echo '</video>';
+*/
+if($yt_customthumb){
+	echo do_shortcode('[videojs_video url="'. $target_url .'" poster="'. $yt_customthumb .'"]');
+}
+elseif ($yt_maxres){
+	echo do_shortcode('[videojs_video url="'. $target_url .'" poster="'. $yt_maxres .'"]');
+}
+else {
+	echo do_shortcode('[videojs_video url="'. $target_url .'" poster="'. $yt_hqthumb .'"]');
+}
+
+}
+}
