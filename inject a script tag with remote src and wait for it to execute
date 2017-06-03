@@ -1,0 +1,31 @@
+inject a script tag with remote src and wait for it to execute
+
+You could easily use Google Analytics or Facebook's method.
+
+(function(d, script) {
+    script = d.createElement('script');
+    script.type = 'text/javascript';
+    script.async = true;
+    script.onload = function(){
+        // remote script has loaded
+    };
+    script.src = 'http://www.google-analytics.com/ga.js';
+    d.getElementsByTagName('head')[0].appendChild(script);
+}(document));
+UPDATE:
+
+Below is the new Facebook method, it relies on an existing script tag instead of <head>:
+
+(function(d, s, id){
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)){ return; }
+    js = d.createElement(s); js.id = id;
+    js.onload = function(){
+        // remote script has loaded
+    };
+    js.src = "//connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+Replace facebook-jssdk with your unique script identifier to avoid it being appended more than once.
+Replace the script's url with your own.
+
