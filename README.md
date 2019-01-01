@@ -1,2 +1,2 @@
-# php-function-snipptes
-Useful php functions
+# PHP Snippets 
+## Useful PHP Snippets 
