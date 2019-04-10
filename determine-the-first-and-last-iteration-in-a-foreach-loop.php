@@ -17,3 +17,39 @@ foreach($array as $key => $element) {
     if ($key === key($array))
         echo 'LAST ELEMENT!';
 }
+
+
+/*
+ * more styels
+ */
+// First
+foreach($array as $value) {
+
+    if ($value === reset($array)) {
+        echo 'FIRST ITEM!';
+    }
+
+}
+
+// Last
+foreach($array as $value) {
+
+    if ($value === end($array)) {
+        echo 'LAST ITEM!';
+    }
+
+}
+
+
+// Combined
+foreach($array as $value) {
+
+    if ($value === reset($array)) {
+        echo 'FIRST ELEMENT!';
+    }
+
+    if ($value === end($array)) {
+        echo 'LAST ITEM!';
+    }
+    
+}
