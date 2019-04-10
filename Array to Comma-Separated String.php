@@ -33,3 +33,8 @@ function str_putcsv($data) {
 
         return $csv;
 }
+
+/*
+Conclusion
+The function above has evolved from a years worth of writing data export scripts for email distribution. There are other functions out there that do array to CSV conversion, but some introduce additional overhead for fixing the shortcomings of the CSV format. What I like is that the above code is clear and concise. By outsourcing the heavy-lifting to PHP's built-in fputcsv function, it doesn't have to involve things like str_replace to escape CSV values with commas or quotes.
+*/
