@@ -1,3 +1,4 @@
+<?php
 /*
 PHP has some great functions for parsing and outputting comma separated value (CSV) files, but it falls short when it comes to returning that data as a string. Sure, you could map over the array with implode, but what would the result of that be if you're dealing with information that contains commas within the values themselves? Luckily, you can combine PHP's built-in functions with some well-placed stream-wrapping to fill the gaps.
 
