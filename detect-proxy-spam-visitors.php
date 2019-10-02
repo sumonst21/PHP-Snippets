@@ -23,3 +23,5 @@
 echo ( proxy_detected() ) ? "Proxy detected" : "No proxy detected";
 
 // change timeout on fsockopen from 30 to 1 and to make it works more quickly
+
+// src: https://stackoverflow.com/questions/21765366/how-to-detect-proxy-spam-visitors
