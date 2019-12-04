@@ -1,5 +1,26 @@
 <?php
 // the right way
+
+/*
+
+//example mysql table
+CREATE TABLE `person` (
+`ID` INT( 5 ) NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+`name` VARCHAR( 30 ) NOT NULL
+);
+CREATE TABLE `colour` (
+`ID` INT( 5 ) NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+`personID` INT( 5 ) NOT NULL ,
+`colour` VARCHAR( 30 ) NOT NULL
+);
+
+INSERT INTO `person` (`ID`, `name`) VALUES (NULL, 'Michael'), (NULL, 'Alyshea');
+INSERT INTO `person` (`ID`, `name`) VALUES (NULL, 'Frank'), (NULL, 'Jim');
+INSERT INTO `colour` (`ID`, `personID`, `colour`) VALUES (NULL, '1', 'Blue'), (NULL, '1', 'Black');
+INSERT INTO `colour` (`ID`, `personID`, `colour`) VALUES (NULL, '2', 'Pink'), (NULL, '3', 'Green');
+INSERT INTO `colour` (`ID`, `personID`, `colour`) VALUES (NULL, '3', 'Brown'), (NULL, '4', 'Yellow');
+
+*/
 // Query for all the people
 $queryPeople = mysql_query("SELECT * FROM person") or die(mysql_error());
 
