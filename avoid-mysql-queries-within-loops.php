@@ -35,3 +35,4 @@ echo $colour['colour'] . "
 ";
 }
 }
+// src: https://www.zope-europe.org/avoid-mysql-queries-within-loops/
