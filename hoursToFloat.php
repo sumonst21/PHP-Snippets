@@ -16,7 +16,20 @@ function hoursToFloat($hours) {
     return floatval($hours) + ($minutes / 60);
 }
 
-// 38h 55m
-echo hoursToFloat('38:55'); //38.916666666667
-//47h 01m
-echo hoursToFloat('47:01'); //47.016666666667
+// // 38h 55m
+// echo hoursToFloat('38:55'); //38.916666666667
+// //47h 01m
+// echo hoursToFloat('47:01'); //47.016666666667
+// echo "\n";
+// echo hoursToFloat('50:32');
+
+$time = hoursToFloat('40:08');
+echo $time;
+echo "\n";
+$rate = 13.00;
+$pay = $time * $rate;
+echo $pay;
+echo "\n";
+echo round($pay, 2);
+echo "\n";
+echo "for $time hours at $rate per hour, you will be paid $pay" . PHP_EOL;
